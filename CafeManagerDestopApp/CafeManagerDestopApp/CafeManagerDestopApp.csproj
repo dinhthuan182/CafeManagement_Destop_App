@@ -152,6 +152,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\Menus.cs" />
+    <Compile Include="Entitys\Table.cs" />
     <Compile Include="Entitys\User.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

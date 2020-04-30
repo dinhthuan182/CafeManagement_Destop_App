@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace CafeManagerDestopApp.Entitys
 {
-    class User
+    public class User
     {
-        public String username { get; set; }
-        public String name { get; set; }
+        public int id;
+        public string name;
+        public string username;
+        public string role;
+        public string deleted_at;
+        public string updated_at;
+        public string created_at;
     }
 }

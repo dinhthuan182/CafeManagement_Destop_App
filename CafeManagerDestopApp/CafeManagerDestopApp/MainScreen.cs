@@ -12,11 +12,42 @@ namespace CafeManagerDestopApp
 {
     public partial class MainScreen : Form
     {
+        private Network.Network apiNetwork = new Network.Network();
         public MainScreen()
         {
             InitializeComponent();
-
+            loadData();
         }
 
+        private async void loadData()
+        {
+    
+        }
+
+        private async void logout_btn_Click(object sender, EventArgs e)
+        {
+            
+            DialogResult conform = MessageBox.Show("Are you sure you want to log out?",
+                    "Notification",
+                    MessageBoxButtons.YesNo);
+            if (conform == DialogResult.Yes)
+            {
+                Boolean res = await apiNetwork.LogoutAsync();
+                if (res)
+                {
+                    var frm = new Login();
+                    frm.Location = this.Location;
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.FormClosing += delegate { this.Show(); };
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Logout failed, Please try again.", "Notification");
+                }
+            }
+            
+        }
     }
 }

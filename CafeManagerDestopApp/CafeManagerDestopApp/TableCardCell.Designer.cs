@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableCardCell));
             this.border_table_card = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lbl_table_number = new System.Windows.Forms.Label();
             this.corner_radius_table_card = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbl_table_number = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +43,17 @@
             this.border_table_card.Horizontal = true;
             this.border_table_card.TargetControl = this.lbl_table_number;
             this.border_table_card.Vertical = true;
+            // 
+            // lbl_table_number
+            // 
+            this.lbl_table_number.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_table_number.Font = new System.Drawing.Font("Segoe UI", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_table_number.ForeColor = System.Drawing.Color.Black;
+            this.lbl_table_number.Location = new System.Drawing.Point(42, 10);
+            this.lbl_table_number.Name = "lbl_table_number";
+            this.lbl_table_number.Size = new System.Drawing.Size(65, 50);
+            this.lbl_table_number.TabIndex = 1;
+            this.lbl_table_number.Text = "20";
             // 
             // corner_radius_table_card
             // 
@@ -59,17 +70,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // lbl_table_number
-            // 
-            this.lbl_table_number.BackColor = System.Drawing.Color.Black;
-            this.lbl_table_number.Font = new System.Drawing.Font("Segoe UI", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_table_number.ForeColor = System.Drawing.Color.White;
-            this.lbl_table_number.Location = new System.Drawing.Point(40, 45);
-            this.lbl_table_number.Name = "lbl_table_number";
-            this.lbl_table_number.Size = new System.Drawing.Size(65, 50);
-            this.lbl_table_number.TabIndex = 1;
-            this.lbl_table_number.Text = "20";
             // 
             // TableCardCell
             // 

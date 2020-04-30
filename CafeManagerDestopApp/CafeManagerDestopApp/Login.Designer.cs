@@ -100,12 +100,12 @@
             this.btn_login.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_login.ForeColor = System.Drawing.Color.Transparent;
             this.btn_login.Image = ((System.Drawing.Image)(resources.GetObject("btn_login.Image")));
-            this.btn_login.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_login.Location = new System.Drawing.Point(115, 147);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(190, 60);
             this.btn_login.TabIndex = 10;
             this.btn_login.Text = "Login";
+            this.btn_login.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_login.UseVisualStyleBackColor = false;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
@@ -173,7 +173,7 @@
             this.txt_username.Name = "txt_username";
             this.txt_username.Size = new System.Drawing.Size(357, 37);
             this.txt_username.TabIndex = 5;
-            this.txt_username.Text = "User name";
+            this.txt_username.Text = "Username";
             // 
             // label1
             // 
