@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
 using CafeManagerDestopApp.Entitys;
+using Newtonsoft.Json;
 
 namespace CafeManagerDestopApp.Network
 {
@@ -23,7 +24,7 @@ namespace CafeManagerDestopApp.Network
         private static readonly string ALL_TABLE = BASE_API + "/tables";
         private static string TABLE_DETAIL(int id)
         {
-            return BASE_API + id;
+            return ALL_TABLE + "/" + id;
         }
 
         private static string UNSTATE_TABLE(int id)
@@ -41,15 +42,20 @@ namespace CafeManagerDestopApp.Network
             return BASE_API + "/receipts/paid/" + id;
         }
 
+        private static string PRINT_BILL(int id)
+        {
+            return BASE_URL + "/storage/export/pdf/paid/" + id;
+        }
+
         public Network()
         {
-            client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         
         public async Task<String> LoginAsync(String username, String password)
         {
-            client.BaseAddress = new Uri(LOGIN);
+            //client.BaseAddress = new Uri(LOGIN);
             try
             {
                 var formContent = new FormUrlEncodedContent(new[]
@@ -59,7 +65,7 @@ namespace CafeManagerDestopApp.Network
                         new KeyValuePair<string, string>("password", password),
                     });
                 //send request
-                HttpResponseMessage responseMessage = await client.PostAsync("login", formContent);
+                HttpResponseMessage responseMessage = await client.PostAsync(LOGIN, formContent);
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
@@ -84,7 +90,7 @@ namespace CafeManagerDestopApp.Network
 
         public async Task<Boolean> LogoutAsync()
         {
-            client.BaseAddress = new Uri(LOGOUT);
+            //client.BaseAddress = new Uri(LOGOUT);
             try
             {
                 // set token global
@@ -92,7 +98,7 @@ namespace CafeManagerDestopApp.Network
                 AuthGlobals.user = null;
                 AuthGlobals.expires_in = 0;
                 //send request
-                HttpResponseMessage responseMessage = await client.PostAsync("logout", null);
+                HttpResponseMessage responseMessage = await client.PostAsync(LOGOUT, null);
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
@@ -104,17 +110,29 @@ namespace CafeManagerDestopApp.Network
             return false;
         }
 
-        public async Task<String> getTables()
+        public async Task<List<TableItem>> GetAllTable()
         {
-            client.BaseAddress = new Uri(ALL_TABLE);
+
             try
             {
                 //send request
-                HttpResponseMessage responseMessage = await client.GetAsync("tables");
+                HttpResponseMessage responseMessage = await client.GetAsync(ALL_TABLE);
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
+
                 var jObject = JObject.Parse(responseJson);
-                return null;
+
+                var resultObjects = AllChildren(jObject).First(c => c.Type == JTokenType.Array && c.Path.Contains("tables")).Children<JObject>();
+
+                var tables = new List<TableItem>();
+                foreach (JObject result in resultObjects)
+                {
+
+                    TableItem t = result.ToObject<TableItem>();
+                    tables.Add(t);
+                }
+
+                return tables;
             }
             catch
             {
@@ -122,22 +140,81 @@ namespace CafeManagerDestopApp.Network
             return null;
         }
 
-        public async Task<String> getTableDetail(int id)
+        public async Task<TableDetailItem> getTableDetail(int id)
         {
-            client.BaseAddress = new Uri(TABLE_DETAIL(id));
+
             try
             {
                 //send request
-                HttpResponseMessage responseMessage = await client.GetAsync("detail");
+                HttpResponseMessage responseMessage = await client.GetAsync(TABLE_DETAIL(id));
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
-                return null;
+                TableDetailItem detail = jObject.ToObject<TableDetailItem>();
+                Console.WriteLine(detail.receipt_id);
+                return detail;
             }
             catch
             {
             }
             return null;
+        }
+
+        public async Task<Boolean> UnstateAsync(int id)
+        {
+
+            try
+            {
+                // set token global
+                AuthGlobals.access_token = null;
+                AuthGlobals.user = null;
+                AuthGlobals.expires_in = 0;
+                //send request
+                HttpResponseMessage responseMessage = await client.GetAsync(UNSTATE_TABLE(id));
+                //get access token from response body
+                var responseJson = await responseMessage.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(responseJson);
+                return true;
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
+        public async Task<Boolean> PaymentAsync(int id)
+        {
+
+            try
+            {
+                // set token global
+                AuthGlobals.access_token = null;
+                AuthGlobals.user = null;
+                AuthGlobals.expires_in = 0;
+                //send request
+                HttpResponseMessage responseMessage = await client.GetAsync(GET_BILL(id));
+                //get access token from response body
+                var responseJson = await responseMessage.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(responseJson);
+                return true;
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
+        // recursively yield all children of json
+        private static IEnumerable<JToken> AllChildren(JToken json)
+        {
+            foreach (var c in json.Children())
+            {
+                yield return c;
+                foreach (var cc in AllChildren(c))
+                {
+                    yield return cc;
+                }
+            }
         }
     }
 }

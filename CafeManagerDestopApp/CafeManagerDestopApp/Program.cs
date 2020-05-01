@@ -7,7 +7,6 @@ using CafeManagerDestopApp.Entitys;
 
 namespace CafeManagerDestopApp
 {
-
     static class Program
     {
         /// <summary>
@@ -18,7 +17,7 @@ namespace CafeManagerDestopApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainScreen());
+            Application.Run(new Login());
         }
     }
 

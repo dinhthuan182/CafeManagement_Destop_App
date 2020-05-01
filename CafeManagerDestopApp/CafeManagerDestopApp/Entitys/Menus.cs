@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CafeManagerDestopApp.Entitys
 {
-    class Menus
+    public class Menus
     {
         public List<MenuItem> product_list;
     }
 
-    class MenuItem
+    public class MenuItem
     {
         public int id;
         public string name;

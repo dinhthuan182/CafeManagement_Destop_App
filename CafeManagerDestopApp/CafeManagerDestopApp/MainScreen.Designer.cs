@@ -61,25 +61,28 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(85)))), ((int)(((byte)(252)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(85)))), ((int)(((byte)(250)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 100;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(200, 800);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(150, 650);
             this.bunifuGradientPanel1.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(85)))), ((int)(((byte)(250)))));
-            this.panel1.Location = new System.Drawing.Point(3, 180);
+            this.panel1.Location = new System.Drawing.Point(2, 146);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 60);
+            this.panel1.Size = new System.Drawing.Size(8, 49);
             this.panel1.TabIndex = 5;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(3, 378);
+            this.button3.Location = new System.Drawing.Point(2, 307);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 60);
+            this.button3.Size = new System.Drawing.Size(148, 49);
             this.button3.TabIndex = 4;
             this.button3.Text = "Another Manager";
             this.button3.UseVisualStyleBackColor = true;
@@ -87,9 +90,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(3, 312);
+            this.button2.Location = new System.Drawing.Point(2, 254);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 60);
+            this.button2.Size = new System.Drawing.Size(148, 49);
             this.button2.TabIndex = 3;
             this.button2.Text = "Another Manager";
             this.button2.UseVisualStyleBackColor = true;
@@ -97,9 +101,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(3, 246);
+            this.button1.Location = new System.Drawing.Point(2, 200);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 60);
+            this.button1.Size = new System.Drawing.Size(148, 49);
             this.button1.TabIndex = 2;
             this.button1.Text = "Another Manager";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,9 +112,10 @@
             // table_btn
             // 
             this.table_btn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table_btn.Location = new System.Drawing.Point(3, 180);
+            this.table_btn.Location = new System.Drawing.Point(2, 146);
+            this.table_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.table_btn.Name = "table_btn";
-            this.table_btn.Size = new System.Drawing.Size(197, 60);
+            this.table_btn.Size = new System.Drawing.Size(148, 49);
             this.table_btn.TabIndex = 1;
             this.table_btn.Text = "Table Manager";
             this.table_btn.UseVisualStyleBackColor = true;
@@ -118,8 +124,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 110);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -134,10 +141,11 @@
             this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(85)))), ((int)(((byte)(250)))));
             this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.White;
             this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.White;
-            this.bunifuGradientPanel2.Location = new System.Drawing.Point(200, 0);
+            this.bunifuGradientPanel2.Location = new System.Drawing.Point(150, 0);
+            this.bunifuGradientPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
             this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(1461, 132);
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(1485, 107);
             this.bunifuGradientPanel2.TabIndex = 1;
             // 
             // logout_btn
@@ -146,9 +154,10 @@
             this.logout_btn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logout_btn.ForeColor = System.Drawing.Color.White;
             this.logout_btn.Image = ((System.Drawing.Image)(resources.GetObject("logout_btn.Image")));
-            this.logout_btn.Location = new System.Drawing.Point(1650, 12);
+            this.logout_btn.Location = new System.Drawing.Point(1238, 10);
+            this.logout_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(187, 63);
+            this.logout_btn.Size = new System.Drawing.Size(140, 51);
             this.logout_btn.TabIndex = 0;
             this.logout_btn.Text = "Logout";
             this.logout_btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -161,20 +170,22 @@
             this.tableManager1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableManager1.Location = new System.Drawing.Point(200, 138);
+            this.tableManager1.Location = new System.Drawing.Point(150, 112);
+            this.tableManager1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableManager1.Name = "tableManager1";
-            this.tableManager1.Size = new System.Drawing.Size(1461, 650);
+            this.tableManager1.Size = new System.Drawing.Size(1485, 528);
             this.tableManager1.TabIndex = 2;
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1661, 800);
+            this.ClientSize = new System.Drawing.Size(1556, 650);
             this.Controls.Add(this.tableManager1);
             this.Controls.Add(this.bunifuGradientPanel2);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainScreen";

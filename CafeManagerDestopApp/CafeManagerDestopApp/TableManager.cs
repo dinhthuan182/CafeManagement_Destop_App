@@ -12,9 +12,16 @@ namespace CafeManagerDestopApp
 {
     public partial class TableManager : UserControl
     {
+        public Network.Network apiNetwork = new Network.Network();
         public TableManager()
         {
             InitializeComponent();
+            loadData();
+        }
+        private async void loadData()
+        {
+            var tables = apiNetwork.GetAllTable();
+          
         }
     }
 }
