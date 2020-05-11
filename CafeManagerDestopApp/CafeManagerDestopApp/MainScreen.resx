@@ -118,61 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuGradientPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJYAAAKKCAYAAADfiqIrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAApwSURBVHhe7dKxaUQBEENB1+l6XPXZcOcClIr9ggkm2mRB
-        7+vn++/9XL+MEhYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQI
-        iwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJC
-        WFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYV
-        wqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCo
-        EBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRF
-        hbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEs
-        KoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwphUSEsKoRFhbCoEBYVwqJCWFQIiwph
-        USEsKoRFhbCoEBYVwqJCWFQIiwphUfEfVj6w4vVIwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5
-        edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Ka
-        l4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSas
-        eXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvC
-        mpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70m
-        rHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhr
-        wpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9
-        Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnY
-        a8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeH
-        vSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl5
-        2GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqX
-        h70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5
-        edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Ka
-        l4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSas
-        eXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvC
-        mpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70m
-        rHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhr
-        wpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9
-        Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnY
-        a8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeH
-        vSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl5
-        2GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqX
-        h70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5
-        edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Ka
-        l4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSas
-        eXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvC
-        mpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70m
-        rHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhr
-        wpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9
-        Jqx5edhrwpqXh70mrHl52GvCmpeHvSaseXnYa8Kal4e9Jqx5edhrDw8rP83zCYsKYVEhLCqERYWwqBAW
-        FcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWw
-        qBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqE
-        RYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEh
-        LCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsK
-        YVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhU
-        CIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKi
-        QlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERYWwqBAWFcKiQlhUCIsKYVEhLCqERcHr/QE0
-        k/NsaswBkAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="bunifuGradientPanel2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYSURBVChTYzi06s9/YvCoQryY2gr//AcAUdRUTI/T6n0A
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAYSURBVChTYzi06s9/YvCoQryY2gr//AcAUdRUTI/T6n0A
         AAAASUVORK5CYII=
 </value>
   </data>

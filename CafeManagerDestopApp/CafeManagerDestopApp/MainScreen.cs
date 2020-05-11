@@ -16,12 +16,7 @@ namespace CafeManagerDestopApp
         public MainScreen()
         {
             InitializeComponent();
-            loadData();
-        }
 
-        private async void loadData()
-        {
-            var tables = apiNetwork.UnstateAsync(1);
         }
 
         private async void logout_btn_Click(object sender, EventArgs e)

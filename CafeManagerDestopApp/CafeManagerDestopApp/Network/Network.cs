@@ -127,7 +127,6 @@ namespace CafeManagerDestopApp.Network
                 var tables = new List<TableItem>();
                 foreach (JObject result in resultObjects)
                 {
-
                     TableItem t = result.ToObject<TableItem>();
                     tables.Add(t);
                 }
