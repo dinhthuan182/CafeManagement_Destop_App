@@ -55,6 +55,7 @@
             this.lbl_table_name.TabIndex = 1;
             this.lbl_table_name.Text = "20";
             this.lbl_table_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_table_name.Click += new System.EventHandler(this.lbl_table_name_Click);
             // 
             // corner_radius_table_card
             // 
@@ -71,6 +72,7 @@
             this.img_state.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_state.TabIndex = 0;
             this.img_state.TabStop = false;
+            this.img_state.Click += new System.EventHandler(this.img_state_Click);
             // 
             // TableCardCell
             // 

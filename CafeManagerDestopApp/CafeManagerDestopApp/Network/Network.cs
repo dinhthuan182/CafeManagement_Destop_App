@@ -22,6 +22,7 @@ namespace CafeManagerDestopApp.Network
         private static readonly string LOGIN = BASE_API + "/login";
         private static readonly string LOGOUT = BASE_API + "/logout";
         private static readonly string ALL_TABLE = BASE_API + "/tables";
+        private static readonly string CHECKIN = BASE_API + "/check";
         private static string TABLE_DETAIL(int id)
         {
             return ALL_TABLE + "/" + id;
@@ -60,32 +61,76 @@ namespace CafeManagerDestopApp.Network
             {
                 var formContent = new FormUrlEncodedContent(new[]
                     {
-                        new KeyValuePair<string, string>("grant_type", "password"),
+                        //new KeyValuePair<string, string>("grant_type", "password"),
                         new KeyValuePair<string, string>("username", username),
                         new KeyValuePair<string, string>("password", password),
                     });
                 //send request
                 HttpResponseMessage responseMessage = await client.PostAsync(LOGIN, formContent);
+                
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
 
-                var token = jObject.GetValue("access_token").ToString();
-                User user = jObject.GetValue("user").ToObject<User>();
-                var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
+                // Call Api checkin
+                var checkin = CheckinAsync(username).Result;
 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                //if (checkin.Item1 == true)
+                //{
+                    var token = jObject.GetValue("access_token").ToString();
+                    User user = jObject.GetValue("user").ToObject<User>();
+                    var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
 
-                // set token global
-                AuthGlobals.access_token = token;
-                AuthGlobals.user = user;
-                AuthGlobals.expires_in = expires;
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                return token;
+                    // set token global
+                    AuthGlobals.access_token = token;
+                    AuthGlobals.user = user;
+                    AuthGlobals.expires_in = expires;
+
+                    return token;
+                //} else
+                //{
+                //    return null;
+                //}
+
+
+                
             } catch
             {
             }
             return null;
+        }
+
+        public async Task<Tuple<Boolean, String>> CheckinAsync(String username)
+        {
+            //client.BaseAddress = new Uri(LOGIN);
+            try
+            {
+
+                var formContent = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("username", username)
+                    });
+                //send request
+                HttpResponseMessage responseMessage = await client.PostAsync(CHECKIN, formContent);
+                //get access token from response body
+                var responseJson = await responseMessage.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(responseJson);
+                var message = jObject.GetValue("message").ToString();
+                var state = false;
+                if((int)responseMessage.StatusCode == 200)
+                {
+                    state = true;
+                }
+
+                return Tuple.Create(state, message);
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         public async Task<Boolean> LogoutAsync()

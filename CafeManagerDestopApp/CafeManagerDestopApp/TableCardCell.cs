@@ -7,44 +7,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CafeManagerDestopApp.Entitys;
 
 namespace CafeManagerDestopApp
 {
     public partial class TableCardCell : UserControl
     {
         public Network.Network apiNetwork = new Network.Network();
-        private int id = -1;
-
+        private TableItem table = new TableItem();
         public TableCardCell()
         {
             InitializeComponent();
         }
 
-        public void setTable(int id, string name, int state)
+        public void setTable(TableItem initTable)
         {
-            this.id = id;
-            lbl_table_name.Text = name;
-            switch (state)
+            this.table = initTable;
+            lbl_table_name.Text = initTable.name;
+
+            if (initTable.user_id != null)
             {
-                case 1:
-                    // have user
-                    img_state.Image = Image.FromFile("C://Users/PC/Desktop/TDTU_DA2/DesktopApp/icons/table_ordering.png");
-                    break;
-                case 2:
+                // have user
+                img_state.Image = Image.FromFile("C://Users/PC/Desktop/TDTU_DA2/DesktopApp/icons/table_ordering.png");
+            }
+            else
+            {
+                if (initTable.status == "Using")
+                {
                     // using
                     img_state.Image = Image.FromFile("C://Users/PC/Desktop/TDTU_DA2/DesktopApp/icons/table_active.png");
-                    break;
-                default:
+                }
+                else
+                {
                     // empty
                     img_state.Image = Image.FromFile("C://Users/PC/Desktop/TDTU_DA2/DesktopApp/icons/table_unactive.png");
-                    break;
+                }
             }
         }
 
         private async void getdetail()
         {
-            var detail = await apiNetwork.getTableDetail(id);
-            MessageBox.Show("selected: " + detail.receipt_id);
+            var detail = await apiNetwork.getTableDetail(this.table.id);
+            ((TableManager)this.Parent.Parent).ShowDetail(detail, this.table);
+        }
+
+        private void img_state_Click(object sender, EventArgs e)
+        {
+            getdetail();
+        }
+
+        private void lbl_table_name_Click(object sender, EventArgs e)
+        {
+            getdetail();
         }
     }
 }

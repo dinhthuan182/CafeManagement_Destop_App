@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tableList = new System.Windows.Forms.TableLayoutPanel();
-            this.tableDetail1 = new CafeManagerDestopApp.TableDetail();
+            this.tableDetail = new CafeManagerDestopApp.TableDetail();
             this.SuspendLayout();
             // 
             // tableList
@@ -56,24 +56,24 @@
             this.tableList.Size = new System.Drawing.Size(905, 832);
             this.tableList.TabIndex = 0;
             // 
-            // tableDetail1
+            // tableDetail
             // 
-            this.tableDetail1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableDetail1.Location = new System.Drawing.Point(905, 0);
-            this.tableDetail1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tableDetail1.Name = "tableDetail1";
-            this.tableDetail1.Size = new System.Drawing.Size(882, 832);
-            this.tableDetail1.TabIndex = 1;
+            this.tableDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableDetail.Location = new System.Drawing.Point(905, 0);
+            this.tableDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableDetail.Name = "tableDetail";
+            this.tableDetail.Size = new System.Drawing.Size(691, 832);
+            this.tableDetail.TabIndex = 1;
             // 
             // TableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableDetail1);
+            this.Controls.Add(this.tableDetail);
             this.Controls.Add(this.tableList);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableManager";
-            this.Size = new System.Drawing.Size(1787, 832);
+            this.Size = new System.Drawing.Size(1596, 832);
             this.ResumeLayout(false);
 
         }
@@ -81,6 +81,6 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableList;
-        private TableDetail tableDetail1;
+        private TableDetail tableDetail;
     }
 }

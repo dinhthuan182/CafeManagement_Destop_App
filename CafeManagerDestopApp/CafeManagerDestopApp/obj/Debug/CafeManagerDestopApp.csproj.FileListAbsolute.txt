@@ -142,3 +142,7 @@ C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopAp
 C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\obj\Debug\CafeManagerDestopApp.csproj.CopyComplete
 C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\obj\Debug\CafeManagerDestopApp.exe
 C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\obj\Debug\CafeManagerDestopApp.pdb
+C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\bin\Debug\PusherClient.dll
+C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\bin\Debug\SuperSocket.ClientEngine.dll
+C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\bin\Debug\WebSocket4Net.dll
+C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\CafeManagerDestopApp\CafeManagerDestopApp\obj\Debug\CafeManagerDestopApp.CheckinControl.resources

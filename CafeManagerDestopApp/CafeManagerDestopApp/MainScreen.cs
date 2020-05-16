@@ -44,5 +44,14 @@ namespace CafeManagerDestopApp
             }
             
         }
+
+        private void btnCheck_Click(object sender, EventArgs e)
+        {
+            var frm = new CheckinControl();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.Show();
+        }
     }
 }
