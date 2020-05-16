@@ -17,7 +17,14 @@ namespace CafeManagerDestopApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            if (AuthGlobals.access_token == null)
+            {
+                Application.Run(new Login());
+            } else
+            {
+                Application.Run(new MainScreen());
+            }
+            
         }
     }
 

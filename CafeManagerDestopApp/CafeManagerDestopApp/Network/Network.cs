@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -12,9 +13,18 @@ using Newtonsoft.Json;
 
 namespace CafeManagerDestopApp.Network
 {
+    public enum PrintType
+    {
+        Bill,
+        Receipt,
+        Drink,
+        Food
+    }
+
     public class Network: ApiController
     {
-        static HttpClient client = new HttpClient();
+        
+        private static HttpClient client = new HttpClient();
 
         private static readonly string BASE_URL = "http://cafe-management-system.herokuapp.com";
         private static readonly string BASE_API = BASE_URL + "/api";
@@ -38,14 +48,9 @@ namespace CafeManagerDestopApp.Network
             return BASE_API + "/receipts/bill/" + id;
         }
 
-        private static string PAYMENT(int id)
+        private static string GET_RECEIPT(int id)
         {
             return BASE_API + "/receipts/paid/" + id;
-        }
-
-        private static string PRINT_BILL(int id)
-        {
-            return BASE_URL + "/storage/export/pdf/paid/" + id;
         }
 
         public Network()
@@ -54,7 +59,7 @@ namespace CafeManagerDestopApp.Network
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
         
-        public async Task<String> LoginAsync(String username, String password)
+        public async Task<Tuple<Boolean, String>> LoginAsync(String username, String password)
         {
             //client.BaseAddress = new Uri(LOGIN);
             try
@@ -75,8 +80,8 @@ namespace CafeManagerDestopApp.Network
                 // Call Api checkin
                 var checkin = CheckinAsync(username).Result;
 
-                //if (checkin.Item1 == true)
-                //{
+                if (checkin.Item1 == true)
+                {
                     var token = jObject.GetValue("access_token").ToString();
                     User user = jObject.GetValue("user").ToObject<User>();
                     var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
@@ -88,14 +93,12 @@ namespace CafeManagerDestopApp.Network
                     AuthGlobals.user = user;
                     AuthGlobals.expires_in = expires;
 
-                    return token;
-                //} else
-                //{
-                //    return null;
-                //}
+                    return Tuple.Create(true, token);
+                } else
+                {
+                   return checkin;
+                }
 
-
-                
             } catch
             {
             }
@@ -107,14 +110,12 @@ namespace CafeManagerDestopApp.Network
             //client.BaseAddress = new Uri(LOGIN);
             try
             {
-
-                var formContent = new FormUrlEncodedContent(new[]
-                    {
-                        new KeyValuePair<string, string>("username", username)
-                    });
+                var values = new Dictionary<string, string>();
+                values.Add("username", username);
+                var content = new FormUrlEncodedContent(values);
                 //send request
-                HttpResponseMessage responseMessage = await client.PostAsync(CHECKIN, formContent);
-                //get access token from response body
+                HttpResponseMessage responseMessage = await client.PostAsync(CHECKIN, content).ConfigureAwait(false);
+                //get message
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
                 var message = jObject.GetValue("message").ToString();
@@ -226,15 +227,11 @@ namespace CafeManagerDestopApp.Network
             return false;
         }
 
-        public async Task<Boolean> PaymentAsync(int id)
+        public async Task<Boolean> GetBillAsync(int id)
         {
 
             try
             {
-                // set token global
-                AuthGlobals.access_token = null;
-                AuthGlobals.user = null;
-                AuthGlobals.expires_in = 0;
                 //send request
                 HttpResponseMessage responseMessage = await client.GetAsync(GET_BILL(id));
                 //get access token from response body
@@ -246,6 +243,52 @@ namespace CafeManagerDestopApp.Network
             {
             }
             return false;
+        }
+
+        public async Task<Boolean> GetReceiptAsync(int id)
+        {
+
+            try
+            {
+                //send request
+                HttpResponseMessage responseMessage = await client.GetAsync(GET_RECEIPT(id));
+                //get access token from response body
+                var responseJson = await responseMessage.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(responseJson);
+                return true;
+            }
+            catch
+            {
+            }
+            return false;
+        }
+
+        public void DownloadFileToLocal(string fileName, PrintType fileType)
+        {
+            using (WebClient webClient = new WebClient())
+            {
+                
+                switch (fileType)
+                {
+                    case PrintType.Bill:
+                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + fileName);
+                        
+                        break;
+                    case PrintType.Receipt:
+                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
+                        
+                        break;
+                    case PrintType.Food:
+                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
+                        
+                        break;
+                    case PrintType.Drink:
+                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
+                        
+                        break;
+                }
+            }
+            
         }
 
         // recursively yield all children of json
@@ -260,5 +303,6 @@ namespace CafeManagerDestopApp.Network
                 }
             }
         }
+
     }
 }

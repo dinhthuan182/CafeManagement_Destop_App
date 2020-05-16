@@ -13,7 +13,7 @@ namespace CafeManagerDestopApp
 {
     public partial class TableCardCell : UserControl
     {
-        public Network.Network apiNetwork = new Network.Network();
+        private Network.Network apiNetwork = new Network.Network();
         private TableItem table = new TableItem();
         public TableCardCell()
         {
@@ -47,8 +47,16 @@ namespace CafeManagerDestopApp
 
         private async void getdetail()
         {
-            var detail = await apiNetwork.getTableDetail(this.table.id);
-            ((TableManager)this.Parent.Parent).ShowDetail(detail, this.table);
+            if (table.user_id == null)
+            {
+                var detail = await apiNetwork.getTableDetail(this.table.id);
+                ((TableManager)this.Parent.Parent).ShowDetail(detail, this.table);
+            } else
+            {
+                MessageBox.Show("The table is being accessed by other users.");
+            }
+
+            
         }
 
         private void img_state_Click(object sender, EventArgs e)

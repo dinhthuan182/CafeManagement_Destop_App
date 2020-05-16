@@ -26,7 +26,9 @@ namespace CafeManagerDestopApp
         private void SetupData()
         {
             detail = new TableDetailItem();
-            table = new TableItem();
+            table = new TableItem();;
+
+            productGrid.Rows.Clear();
             lblName.Text = "Table: " + table.name;
             lblTotal.Text = detail.current_total.ToString();
             lblDiscount.Text = (detail.current_total - detail.current_sale_total).ToString();
@@ -38,6 +40,16 @@ namespace CafeManagerDestopApp
         {
             detail = newDetail;
             table = newTable;
+
+            for (int i = 0; i < newDetail.product_list.Count; i++)
+            {
+                orderItem p = newDetail.product_list[i];
+                string[] row = new string[] { p.name, p.quantity.ToString(), p.price.ToString() };
+                productGrid.Rows.Add(row);
+
+                productGrid.Rows[i].ReadOnly = true;
+            }
+
 
             lblName.Text = "Table: " + newTable.name;
             lblTotal.Text = newDetail.current_total.ToString();
@@ -51,13 +63,25 @@ namespace CafeManagerDestopApp
             //CalApi unstate
 
             var result = apiNetwork.UnstateAsync(table.id);
-            if (result.Result)
-            {
                 // resetdata
                 SetupData();
-            }
-
         }
 
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+            if (detail.receipt_id.HasValue)
+            {
+                var result = apiNetwork.GetBillAsync(detail.receipt_id.Value);
+            }
+            
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            if (detail.receipt_id.HasValue)
+            {
+                var result = apiNetwork.GetReceiptAsync(detail.receipt_id.Value);
+            }
+        }
     }
 }

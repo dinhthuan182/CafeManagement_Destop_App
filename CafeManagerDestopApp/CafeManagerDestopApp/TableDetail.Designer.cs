@@ -75,7 +75,7 @@
             this.productGrid.Name = "productGrid";
             this.productGrid.RowHeadersWidth = 51;
             this.productGrid.RowTemplate.Height = 24;
-            this.productGrid.Size = new System.Drawing.Size(647, 409);
+            this.productGrid.Size = new System.Drawing.Size(672, 415);
             this.productGrid.TabIndex = 1;
             // 
             // name
@@ -114,17 +114,17 @@
             this.panel1.Location = new System.Drawing.Point(12, 509);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(647, 190);
+            this.panel1.Size = new System.Drawing.Size(668, 190);
             this.panel1.TabIndex = 2;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnReceipt);
             this.panel6.Controls.Add(this.btnBill);
-            this.panel6.Location = new System.Drawing.Point(399, 15);
+            this.panel6.Location = new System.Drawing.Point(419, 15);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(260, 159);
+            this.panel6.Size = new System.Drawing.Size(246, 159);
             this.panel6.TabIndex = 4;
             // 
             // btnReceipt
@@ -137,6 +137,7 @@
             this.btnReceipt.TabIndex = 9;
             this.btnReceipt.Text = "Export Receipt";
             this.btnReceipt.UseVisualStyleBackColor = true;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
             // btnBill
             // 
@@ -148,6 +149,7 @@
             this.btnBill.TabIndex = 1;
             this.btnBill.Text = "Export Bill";
             this.btnBill.UseVisualStyleBackColor = true;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
             // 
             // lblFinalTotal
             // 
@@ -175,7 +177,7 @@
             this.panel2.Location = new System.Drawing.Point(9, 121);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(341, 10);
+            this.panel2.Size = new System.Drawing.Size(404, 10);
             this.panel2.TabIndex = 6;
             // 
             // lblSubTotal
@@ -241,7 +243,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(560, 9);
+            this.btnExit.Location = new System.Drawing.Point(581, 9);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 36);
             this.btnExit.TabIndex = 3;
@@ -259,7 +261,7 @@
             this.Controls.Add(this.lblName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableDetail";
-            this.Size = new System.Drawing.Size(675, 721);
+            this.Size = new System.Drawing.Size(694, 721);
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

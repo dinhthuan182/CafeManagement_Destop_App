@@ -18,29 +18,35 @@ namespace CafeManagerDestopApp
 
         private async void btn_login_Click(object sender, EventArgs e)
         {
-           
 
+            btn_login.Enabled = false;
             if (string.IsNullOrWhiteSpace(txt_username.Text) || string.IsNullOrWhiteSpace(txt_password.Text) || txt_username.Text == "Username" || txt_password.Text == "Password")
             {
                 MessageBox.Show("Please enter your username and password");
                 return;
             }
 
-            string token = await apiNetwork.LoginAsync(txt_username.Text, txt_password.Text);
+            var token = await apiNetwork.LoginAsync(txt_username.Text, txt_password.Text);
             if (token == null) {
                 MessageBox.Show("Username and password are incorrect");
             } else
             {
-                var frm = new MainScreen
+                if (token.Item1)
                 {
-                    Location = this.Location,
-                    StartPosition = FormStartPosition.Manual
-                };
-                frm.FormClosing += delegate { this.Show(); };
-                frm.Show();
-                this.Hide();
+                    var frm = new MainScreen
+                    {
+                        Location = this.Location,
+                        StartPosition = FormStartPosition.Manual
+                    };
+                    frm.FormClosing += delegate { this.Show(); };
+                    frm.Show();
+                    this.Hide();
+                } else
+                {
+                    MessageBox.Show(token.Item2);
+                }  
             }
-            
+            btn_login.Enabled = true;
         }
 
     }
