@@ -16,7 +16,13 @@ namespace CafeManagerDestopApp
         public MainScreen()
         {
             InitializeComponent();
+            setupUser();
+        }
 
+        public void setupUser()
+        {
+            lblName.Text = "User: " + AuthGlobals.user.name;
+            lblRole.Text = AuthGlobals.user.role;
         }
 
         private async void logout_btn_Click(object sender, EventArgs e)

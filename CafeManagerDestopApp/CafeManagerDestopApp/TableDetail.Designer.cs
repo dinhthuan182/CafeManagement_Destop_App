@@ -30,9 +30,12 @@
         {
             this.lblName = new System.Windows.Forms.Label();
             this.productGrid = new System.Windows.Forms.DataGridView();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.salePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnReceipt = new System.Windows.Forms.Button();
@@ -65,39 +68,73 @@
             // 
             // productGrid
             // 
+            this.productGrid.AllowUserToAddRows = false;
+            this.productGrid.AllowUserToDeleteRows = false;
+            this.productGrid.AllowUserToResizeColumns = false;
+            this.productGrid.AllowUserToResizeRows = false;
+            this.productGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.productGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.stt,
             this.name,
             this.quantity,
-            this.price});
+            this.price,
+            this.salePrice,
+            this.total});
             this.productGrid.Location = new System.Drawing.Point(12, 81);
             this.productGrid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.productGrid.Name = "productGrid";
+            this.productGrid.ReadOnly = true;
+            this.productGrid.RowHeadersVisible = false;
             this.productGrid.RowHeadersWidth = 51;
             this.productGrid.RowTemplate.Height = 24;
-            this.productGrid.Size = new System.Drawing.Size(672, 415);
+            this.productGrid.Size = new System.Drawing.Size(770, 475);
             this.productGrid.TabIndex = 1;
+            // 
+            // stt
+            // 
+            this.stt.FillWeight = 50F;
+            this.stt.HeaderText = "STT";
+            this.stt.MinimumWidth = 6;
+            this.stt.Name = "stt";
+            this.stt.ReadOnly = true;
             // 
             // name
             // 
-            this.name.HeaderText = "Sản phẩm";
+            this.name.FillWeight = 200F;
+            this.name.HeaderText = "Product name";
             this.name.MinimumWidth = 6;
             this.name.Name = "name";
-            this.name.Width = 200;
+            this.name.ReadOnly = true;
             // 
             // quantity
             // 
-            this.quantity.HeaderText = "Số lượng";
+            this.quantity.FillWeight = 70F;
+            this.quantity.HeaderText = "Quantity";
             this.quantity.MinimumWidth = 6;
             this.quantity.Name = "quantity";
-            this.quantity.Width = 125;
+            this.quantity.ReadOnly = true;
             // 
             // price
             // 
-            this.price.HeaderText = "Đơn giá";
+            this.price.HeaderText = "Price";
             this.price.MinimumWidth = 6;
             this.price.Name = "price";
-            this.price.Width = 125;
+            this.price.ReadOnly = true;
+            // 
+            // salePrice
+            // 
+            this.salePrice.HeaderText = "Sale Price";
+            this.salePrice.MinimumWidth = 6;
+            this.salePrice.Name = "salePrice";
+            this.salePrice.ReadOnly = true;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
             // 
             // panel1
             // 
@@ -111,26 +148,26 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 509);
+            this.panel1.Location = new System.Drawing.Point(12, 560);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(668, 190);
+            this.panel1.Size = new System.Drawing.Size(770, 190);
             this.panel1.TabIndex = 2;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.btnReceipt);
             this.panel6.Controls.Add(this.btnBill);
-            this.panel6.Location = new System.Drawing.Point(419, 15);
+            this.panel6.Location = new System.Drawing.Point(508, 15);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(246, 159);
+            this.panel6.Size = new System.Drawing.Size(246, 175);
             this.panel6.TabIndex = 4;
             // 
             // btnReceipt
             // 
             this.btnReceipt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceipt.Location = new System.Drawing.Point(3, 65);
+            this.btnReceipt.Location = new System.Drawing.Point(3, 106);
             this.btnReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReceipt.Name = "btnReceipt";
             this.btnReceipt.Size = new System.Drawing.Size(240, 50);
@@ -142,7 +179,7 @@
             // btnBill
             // 
             this.btnBill.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBill.Location = new System.Drawing.Point(3, 9);
+            this.btnBill.Location = new System.Drawing.Point(3, 28);
             this.btnBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(240, 50);
@@ -174,10 +211,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Location = new System.Drawing.Point(9, 121);
+            this.panel2.Location = new System.Drawing.Point(0, 121);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(404, 10);
+            this.panel2.Size = new System.Drawing.Size(488, 10);
             this.panel2.TabIndex = 6;
             // 
             // lblSubTotal
@@ -243,9 +280,9 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(581, 9);
+            this.btnExit.Location = new System.Drawing.Point(665, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(99, 36);
+            this.btnExit.Size = new System.Drawing.Size(101, 47);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -261,7 +298,7 @@
             this.Controls.Add(this.lblName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableDetail";
-            this.Size = new System.Drawing.Size(694, 721);
+            this.Size = new System.Drawing.Size(790, 763);
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -289,8 +326,11 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnBill;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stt;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

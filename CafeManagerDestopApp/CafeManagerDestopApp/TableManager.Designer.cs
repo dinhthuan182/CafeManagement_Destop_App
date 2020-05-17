@@ -58,11 +58,10 @@
             // 
             // tableDetail
             // 
-            this.tableDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableDetail.Location = new System.Drawing.Point(905, 0);
+            this.tableDetail.Location = new System.Drawing.Point(890, 0);
             this.tableDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableDetail.Name = "tableDetail";
-            this.tableDetail.Size = new System.Drawing.Size(691, 832);
+            this.tableDetail.Size = new System.Drawing.Size(800, 832);
             this.tableDetail.TabIndex = 1;
             // 
             // TableManager
@@ -73,7 +72,7 @@
             this.Controls.Add(this.tableList);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableManager";
-            this.Size = new System.Drawing.Size(1596, 832);
+            this.Size = new System.Drawing.Size(1690, 832);
             this.ResumeLayout(false);
 
         }

@@ -39,26 +39,27 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt_username = new ZBobb.AlphaBlendTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lbl_header = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.PictureBox();
             this.draw_background = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.corner_radius_background = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.draw_login_btn = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.corner_radius_login_btn = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gradiant_background.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // gradiant_background
             // 
             this.gradiant_background.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gradiant_background.BackgroundImage")));
             this.gradiant_background.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gradiant_background.Controls.Add(this.pictureBox3);
             this.gradiant_background.Controls.Add(this.panel2);
-            this.gradiant_background.Controls.Add(this.label1);
             this.gradiant_background.Controls.Add(this.lbl_header);
             this.gradiant_background.Controls.Add(this.btn_close);
             this.gradiant_background.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -84,7 +85,7 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.txt_username);
-            this.panel2.Location = new System.Drawing.Point(37, 364);
+            this.panel2.Location = new System.Drawing.Point(40, 400);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(420, 217);
             this.panel2.TabIndex = 6;
@@ -175,20 +176,6 @@
             this.txt_username.TabIndex = 5;
             this.txt_username.Text = "Username";
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(163, 294);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 41);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Login Form";
-            // 
             // lbl_header
             // 
             this.lbl_header.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -197,7 +184,7 @@
             this.lbl_header.BackColor = System.Drawing.Color.Transparent;
             this.lbl_header.Font = new System.Drawing.Font("Segoe UI Black", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_header.ForeColor = System.Drawing.Color.White;
-            this.lbl_header.Location = new System.Drawing.Point(2, 75);
+            this.lbl_header.Location = new System.Drawing.Point(23, 57);
             this.lbl_header.Name = "lbl_header";
             this.lbl_header.Size = new System.Drawing.Size(455, 46);
             this.lbl_header.TabIndex = 1;
@@ -240,6 +227,17 @@
             this.corner_radius_login_btn.ElipseRadius = 30;
             this.corner_radius_login_btn.TargetControl = this.btn_login;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(130, 124);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(240, 240);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,6 +255,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,7 +265,6 @@
         private Bunifu.Framework.UI.BunifuGradientPanel gradiant_background;
         private System.Windows.Forms.PictureBox btn_close;
         private System.Windows.Forms.Label lbl_header;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private ZBobb.AlphaBlendTextBox txt_username;
         private System.Windows.Forms.Panel panel2;
@@ -279,6 +277,7 @@
         private Bunifu.Framework.UI.BunifuElipse corner_radius_background;
         private Bunifu.Framework.UI.BunifuDragControl draw_login_btn;
         private Bunifu.Framework.UI.BunifuElipse corner_radius_login_btn;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

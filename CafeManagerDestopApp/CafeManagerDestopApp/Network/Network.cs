@@ -10,6 +10,7 @@ using System.Web.Http;
 using Newtonsoft.Json.Linq;
 using CafeManagerDestopApp.Entitys;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace CafeManagerDestopApp.Network
 {
@@ -78,10 +79,10 @@ namespace CafeManagerDestopApp.Network
                 var jObject = JObject.Parse(responseJson);
 
                 // Call Api checkin
-                var checkin = CheckinAsync(username).Result;
+                //var checkin = CheckinAsync(username).Result;
 
-                if (checkin.Item1 == true)
-                {
+                //if (checkin.Item1 == true)
+                //{
                     var token = jObject.GetValue("access_token").ToString();
                     User user = jObject.GetValue("user").ToObject<User>();
                     var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
@@ -94,10 +95,10 @@ namespace CafeManagerDestopApp.Network
                     AuthGlobals.expires_in = expires;
 
                     return Tuple.Create(true, token);
-                } else
-                {
-                   return checkin;
-                }
+                //} else
+                //{
+               //    return checkin;
+               // }
 
             } catch
             {
@@ -237,6 +238,10 @@ namespace CafeManagerDestopApp.Network
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
+                var fileName = jObject.GetValue("bill").ToString();
+                var host = jObject.GetValue("host").ToString();
+
+                DownloadFileToLocal(host, fileName, PrintType.Bill);
                 return true;
             }
             catch
@@ -255,6 +260,10 @@ namespace CafeManagerDestopApp.Network
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
+                var fileName = jObject.GetValue("paid").ToString();
+                var host = jObject.GetValue("host").ToString();
+
+                DownloadFileToLocal(host, fileName, PrintType.Receipt);
                 return true;
             }
             catch
@@ -263,7 +272,7 @@ namespace CafeManagerDestopApp.Network
             return false;
         }
 
-        public void DownloadFileToLocal(string fileName, PrintType fileType)
+        public void DownloadFileToLocal(string host, string fileName, PrintType fileType)
         {
             using (WebClient webClient = new WebClient())
             {
@@ -271,19 +280,21 @@ namespace CafeManagerDestopApp.Network
                 switch (fileType)
                 {
                     case PrintType.Bill:
-                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + fileName);
-                        
+                        //byte[] arr = webClient.DownloadData(host + fileName);
+                        //File.WriteAllBytes(@"C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\Downloads\Bills\" + fileName, arr);
+                        webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\");
+
                         break;
                     case PrintType.Receipt:
-                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
+                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
                         
                         break;
                     case PrintType.Food:
-                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
+                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
                         
                         break;
                     case PrintType.Drink:
-                        webClient.DownloadFile(fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
+                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
                         
                         break;
                 }

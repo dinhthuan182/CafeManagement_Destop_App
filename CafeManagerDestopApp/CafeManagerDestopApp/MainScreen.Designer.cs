@@ -32,14 +32,21 @@
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.btnCheck = new System.Windows.Forms.Button();
             this.logout_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
             this.tableManager1 = new CafeManagerDestopApp.TableManager();
             this.bunifuGradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuGradientPanel2
             // 
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.lblRole);
+            this.bunifuGradientPanel2.Controls.Add(this.lblName);
+            this.bunifuGradientPanel2.Controls.Add(this.pictureBox1);
             this.bunifuGradientPanel2.Controls.Add(this.btnCheck);
             this.bunifuGradientPanel2.Controls.Add(this.logout_btn);
             this.bunifuGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -84,6 +91,39 @@
             this.logout_btn.UseVisualStyleBackColor = false;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 125);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(147, 33);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(81, 41);
+            this.lblName.TabIndex = 3;
+            this.lblName.Text = "User";
+            // 
+            // lblRole
+            // 
+            this.lblRole.AutoSize = true;
+            this.lblRole.BackColor = System.Drawing.Color.Transparent;
+            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.Location = new System.Drawing.Point(149, 74);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(54, 28);
+            this.lblRole.TabIndex = 4;
+            this.lblRole.Text = "Role";
+            // 
             // tableManager1
             // 
             this.tableManager1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -107,6 +147,8 @@
             this.Text = "MainScreen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.bunifuGradientPanel2.ResumeLayout(false);
+            this.bunifuGradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -116,5 +158,8 @@
         private TableManager tableManager1;
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Button btnCheck;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblRole;
+        private System.Windows.Forms.Label lblName;
     }
 }

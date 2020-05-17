@@ -38,13 +38,19 @@ namespace CafeManagerDestopApp
 
         public void Update(TableDetailItem newDetail, TableItem newTable)
         {
+            if (table.id != 0)
+            {
+                var result = apiNetwork.UnstateAsync(table.id);
+                SetupData();
+            }
+
             detail = newDetail;
             table = newTable;
 
             for (int i = 0; i < newDetail.product_list.Count; i++)
             {
                 orderItem p = newDetail.product_list[i];
-                string[] row = new string[] { p.name, p.quantity.ToString(), p.price.ToString() };
+                string[] row = new string[] {(i+1).ToString(), p.name, p.quantity.ToString(), p.price.ToString(), p.sale_price.ToString(), p.sale_price.HasValue ? (p.sale_price.Value * p.quantity).ToString():(p.price * p.quantity).ToString() };
                 productGrid.Rows.Add(row);
 
                 productGrid.Rows[i].ReadOnly = true;
@@ -80,7 +86,12 @@ namespace CafeManagerDestopApp
         {
             if (detail.receipt_id.HasValue)
             {
-                var result = apiNetwork.GetReceiptAsync(detail.receipt_id.Value);
+                var result = apiNetwork.GetReceiptAsync(detail.receipt_id.Value).Result;
+
+                if (result == true)
+                {
+                    SetupData();
+                }
             }
         }
     }
