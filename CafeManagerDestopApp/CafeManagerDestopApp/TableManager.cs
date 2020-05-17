@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeManagerDestopApp.Entitys;
 using PusherClient;
@@ -15,9 +9,7 @@ namespace CafeManagerDestopApp
     public partial class TableManager : UserControl
     {
         private static Pusher _pusher;
-        private static Channel _chatChannel;
-        //private static PresenceChannel _presenceChannel;
-        //private static string _name;
+        private static Channel _tableChannel;
 
         public Network.Network apiNetwork = new Network.Network();
         List<TableItem> allTable = new List<TableItem>();
@@ -39,17 +31,17 @@ namespace CafeManagerDestopApp
             });
 
             // Setup private channel
-            _chatChannel = _pusher.SubscribeAsync("mobile").Result;
+            _tableChannel = _pusher.SubscribeAsync("mobile").Result;
 
             // Inline binding!
-            _chatChannel.Bind("changeStateTable-event", (dynamic data) =>
+            _tableChannel.Bind("changeStateTable-event", (dynamic data) =>
             {
-                updateTables();
+                UpdateTables();
             });
             await _pusher.ConnectAsync();
         }
 
-        private async void updateTables()
+        private async void UpdateTables()
         {
             var tables = await apiNetwork.GetAllTable();
             if (tables != null)
@@ -105,8 +97,6 @@ namespace CafeManagerDestopApp
 
                         index++;
                         tableList.Controls.Add(item, x, y);
-
-
                     }
                 }
             }
