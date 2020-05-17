@@ -62,7 +62,6 @@ namespace CafeManagerDestopApp.Network
         
         public async Task<Tuple<Boolean, String>> LoginAsync(String username, String password)
         {
-            //client.BaseAddress = new Uri(LOGIN);
             try
             {
                 var formContent = new FormUrlEncodedContent(new[]
@@ -108,7 +107,6 @@ namespace CafeManagerDestopApp.Network
 
         public async Task<Tuple<Boolean, String>> CheckinAsync(String username)
         {
-            //client.BaseAddress = new Uri(LOGIN);
             try
             {
                 var values = new Dictionary<string, string>();
@@ -137,7 +135,6 @@ namespace CafeManagerDestopApp.Network
 
         public async Task<Boolean> LogoutAsync()
         {
-            //client.BaseAddress = new Uri(LOGOUT);
             try
             {
                 // set token global
@@ -244,8 +241,9 @@ namespace CafeManagerDestopApp.Network
                 DownloadFileToLocal(host, fileName, PrintType.Bill);
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
             }
             return false;
         }
@@ -276,26 +274,22 @@ namespace CafeManagerDestopApp.Network
         {
             using (WebClient webClient = new WebClient())
             {
-                
+                String urlString = "http://" + host + fileName;
                 switch (fileType)
                 {
                     case PrintType.Bill:
-                        //byte[] arr = webClient.DownloadData(host + fileName);
-                        //File.WriteAllBytes(@"C:\Users\PC\Desktop\TDTU_DA2\DesktopApp\Downloads\Bills\" + fileName, arr);
-                        webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\");
-
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + fileName);
                         break;
                     case PrintType.Receipt:
-                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
-                        
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
+
                         break;
                     case PrintType.Food:
-                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
-                        
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
+
                         break;
                     case PrintType.Drink:
-                        //webClient.DownloadFile(host + fileName, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
-                        
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
                         break;
                 }
             }

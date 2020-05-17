@@ -20,7 +20,7 @@ namespace CafeManagerDestopApp
             InitializeComponent();
         }
 
-        public void setTable(TableItem initTable)
+        public void SetTable(TableItem initTable)
         {
             this.table = initTable;
             lbl_table_name.Text = initTable.name;
@@ -45,7 +45,7 @@ namespace CafeManagerDestopApp
             }
         }
 
-        private async void getdetail()
+        private async void Getdetail()
         {
             if (table.user_id == null)
             {
@@ -54,19 +54,17 @@ namespace CafeManagerDestopApp
             } else
             {
                 MessageBox.Show("The table is being accessed by other users.");
-            }
-
-            
+            }            
         }
 
         private void img_state_Click(object sender, EventArgs e)
         {
-            getdetail();
+            Getdetail();
         }
 
         private void lbl_table_name_Click(object sender, EventArgs e)
         {
-            getdetail();
+            Getdetail();
         }
     }
 }

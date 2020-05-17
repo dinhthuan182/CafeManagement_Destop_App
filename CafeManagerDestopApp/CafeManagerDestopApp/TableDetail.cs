@@ -67,7 +67,6 @@ namespace CafeManagerDestopApp
         private void btnExit_Click(object sender, EventArgs e)
         {
             //CalApi unstate
-
             var result = apiNetwork.UnstateAsync(table.id);
                 // resetdata
                 SetupData();
@@ -79,7 +78,6 @@ namespace CafeManagerDestopApp
             {
                 var result = apiNetwork.GetBillAsync(detail.receipt_id.Value);
             }
-            
         }
 
         private void btnReceipt_Click(object sender, EventArgs e)

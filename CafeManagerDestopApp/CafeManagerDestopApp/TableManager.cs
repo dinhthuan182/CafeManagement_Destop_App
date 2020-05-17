@@ -59,7 +59,7 @@ namespace CafeManagerDestopApp
                 foreach (TableItem item in tables)
                 {
                     TableCardCell cell = (tableList.Controls.Find(Name = item.id.ToString(), true).First() as TableCardCell);
-                    cell.setTable(item);
+                    cell.SetTable(item);
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace CafeManagerDestopApp
                         //item
                         var table = tables[index];
                         TableCardCell item = new TableCardCell() { Name = table.id.ToString()};
-                        item.setTable(table);
+                        item.SetTable(table);
 
                         index++;
                         tableList.Controls.Add(item, x, y);
