@@ -18,34 +18,46 @@ namespace CafeManagerDestopApp
             InitializeComponent();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
             if (this.txtCheckname.Text == "Username" || this.txtCheckname.Text == "") {
-                MessageBox.Show("Please enter your username to checkin/checkout.");
+                MessageBox.Show("Please enter your username to checkin.");
                 return;
             }
 
-            var checkTask =  apiNetwork.CheckinAsync(this.txtCheckname.Text);
-            var result = checkTask.Result;
+            var result = await apiNetwork.CheckinAsync(this.txtCheckname.Text);
             
             if (result == null)
             {
-                MessageBox.Show("Call api null");
+                MessageBox.Show("Can not checkout");
                 return;
             }
 
-            if ( result.Item1 )
-            {
-                MessageBox.Show("Call api checkin success");
-            } else
-            {
-                MessageBox.Show("Call api checkin faild");
-            }
+            MessageBox.Show(result.Item2);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private async void btnCheckout_Click(object sender, EventArgs e)
+        {
+            if (this.txtCheckname.Text == "Username" || this.txtCheckname.Text == "")
+            {
+                MessageBox.Show("Please enter your username to checkout.");
+                return;
+            }
+
+            var result = await apiNetwork.CheckoutAsync(this.txtCheckname.Text);
+
+            if (result == null)
+            {
+                MessageBox.Show("Can not checkout");
+                return;
+            }
+
+            MessageBox.Show(result.Item2);
         }
     }
 }

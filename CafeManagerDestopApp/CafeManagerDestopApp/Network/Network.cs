@@ -18,8 +18,7 @@ namespace CafeManagerDestopApp.Network
     {
         Bill,
         Receipt,
-        Drink,
-        Food
+        Order
     }
 
     public class Network: ApiController
@@ -33,7 +32,8 @@ namespace CafeManagerDestopApp.Network
         private static readonly string LOGIN = BASE_API + "/login";
         private static readonly string LOGOUT = BASE_API + "/logout";
         private static readonly string ALL_TABLE = BASE_API + "/tables";
-        private static readonly string CHECKIN = BASE_API + "/check";
+        private static readonly string CHECKIN = BASE_API + "/checkin";
+        private static readonly string CHECKOUT = BASE_API + "/checkout";
         private static string TABLE_DETAIL(int id)
         {
             return ALL_TABLE + "/" + id;
@@ -66,10 +66,10 @@ namespace CafeManagerDestopApp.Network
             {
                 var formContent = new FormUrlEncodedContent(new[]
                     {
-                        //new KeyValuePair<string, string>("grant_type", "password"),
                         new KeyValuePair<string, string>("username", username),
                         new KeyValuePair<string, string>("password", password),
                     });
+
                 //send request
                 HttpResponseMessage responseMessage = await client.PostAsync(LOGIN, formContent);
                 
@@ -113,7 +113,7 @@ namespace CafeManagerDestopApp.Network
                 values.Add("username", username);
                 var content = new FormUrlEncodedContent(values);
                 //send request
-                HttpResponseMessage responseMessage = await client.PostAsync(CHECKIN, content).ConfigureAwait(false);
+                HttpResponseMessage responseMessage = await client.PostAsync(CHECKIN, content).ConfigureAwait(true);
                 //get message
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
@@ -131,6 +131,34 @@ namespace CafeManagerDestopApp.Network
                 return null;
             }
             
+        }
+
+        public async Task<Tuple<Boolean, String>> CheckoutAsync(String username)
+        {
+            try
+            {
+                var values = new Dictionary<string, string>();
+                values.Add("username", username);
+                var content = new FormUrlEncodedContent(values);
+                //send request
+                HttpResponseMessage responseMessage = await client.PostAsync(CHECKOUT, content).ConfigureAwait(true);
+                //get message
+                var responseJson = await responseMessage.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(responseJson);
+                var message = jObject.GetValue("message").ToString();
+                var state = false;
+                if ((int)responseMessage.StatusCode == 200)
+                {
+                    state = true;
+                }
+
+                return Tuple.Create(state, message);
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public async Task<Boolean> LogoutAsync()
@@ -193,9 +221,16 @@ namespace CafeManagerDestopApp.Network
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
-                TableDetailItem detail = jObject.ToObject<TableDetailItem>();
-                Console.WriteLine(detail.receipt_id);
-                return detail;
+
+                if (responseMessage.StatusCode == HttpStatusCode.OK)
+                {
+                    TableDetailItem detail = jObject.ToObject<TableDetailItem>();
+                    return detail;
+                } else if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    return null;
+                }
+
             }
             catch
             {
@@ -248,48 +283,55 @@ namespace CafeManagerDestopApp.Network
             return false;
         }
 
-        public async Task<Boolean> GetReceiptAsync(int id)
+        public async Task<Tuple<Boolean, String>> GetReceiptAsync(int id)
         {
 
             try
             {
                 //send request
-                HttpResponseMessage responseMessage = await client.GetAsync(GET_RECEIPT(id));
+                HttpResponseMessage response = await client.GetAsync(GET_RECEIPT(id));
                 //get access token from response body
-                var responseJson = await responseMessage.Content.ReadAsStringAsync();
-                var jObject = JObject.Parse(responseJson);
-                var fileName = jObject.GetValue("paid").ToString();
-                var host = jObject.GetValue("host").ToString();
-
-                DownloadFileToLocal(host, fileName, PrintType.Receipt);
-                return true;
+                var responseJson = await response.Content.ReadAsStringAsync();
+                
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var jObject = JObject.Parse(responseJson);
+                    var fileName = jObject.GetValue("paid").ToString();
+                    var host = jObject.GetValue("host").ToString();
+                    DownloadFileToLocal(host, fileName, PrintType.Receipt);
+                    return Tuple.Create(true, "success");
+                } else
+                {
+                    return Tuple.Create(false, "Just export bill before export receipt.");
+                }
+               
             }
-            catch
+            catch (Exception e)
             {
+                return Tuple.Create(false, e.Message);
             }
-            return false;
+            
         }
 
         public void DownloadFileToLocal(string host, string fileName, PrintType fileType)
         {
             using (WebClient webClient = new WebClient())
             {
+                DateTime localDate = DateTime.Now;
                 String urlString = "http://" + host + fileName;
+
                 switch (fileType)
                 {
                     case PrintType.Bill:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + fileName);
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + localDate.ToString("de-DE") + fileName);
                         break;
                     case PrintType.Receipt:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + fileName);
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + localDate.ToString("de-DE") + fileName);
 
                         break;
-                    case PrintType.Food:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Foods\\" + fileName);
+                    case PrintType.Order:
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\" + localDate.ToString("de-DE") + fileName);
 
-                        break;
-                    case PrintType.Drink:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\Drinks\\" + fileName);
                         break;
                 }
             }

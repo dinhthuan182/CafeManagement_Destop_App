@@ -23,6 +23,7 @@ namespace CafeManagerDestopApp
             if (string.IsNullOrWhiteSpace(txt_username.Text) || string.IsNullOrWhiteSpace(txt_password.Text) || txt_username.Text == "Username" || txt_password.Text == "Password")
             {
                 MessageBox.Show("Please enter your username and password");
+                btn_login.Enabled = true;
                 return;
             }
 

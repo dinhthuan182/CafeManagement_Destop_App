@@ -43,10 +43,8 @@
             this.lblFinalTotal = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -142,10 +140,8 @@
             this.panel1.Controls.Add(this.lblFinalTotal);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.lblSubTotal);
             this.panel1.Controls.Add(this.lblDiscount);
             this.panel1.Controls.Add(this.lblTotal);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 560);
@@ -217,21 +213,11 @@
             this.panel2.Size = new System.Drawing.Size(488, 10);
             this.panel2.TabIndex = 6;
             // 
-            // lblSubTotal
-            // 
-            this.lblSubTotal.AutoSize = true;
-            this.lblSubTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubTotal.Location = new System.Drawing.Point(285, 85);
-            this.lblSubTotal.Name = "lblSubTotal";
-            this.lblSubTotal.Size = new System.Drawing.Size(51, 32);
-            this.lblSubTotal.TabIndex = 5;
-            this.lblSubTotal.Text = "100";
-            // 
             // lblDiscount
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(285, 53);
+            this.lblDiscount.Location = new System.Drawing.Point(285, 70);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(28, 32);
             this.lblDiscount.TabIndex = 4;
@@ -247,21 +233,11 @@
             this.lblTotal.TabIndex = 3;
             this.lblTotal.Text = "100";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 85);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 32);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Sub total";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 53);
+            this.label3.Location = new System.Drawing.Point(3, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 32);
             this.label3.TabIndex = 1;
@@ -313,10 +289,8 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.DataGridView productGrid;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblSubTotal;
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Panel panel2;

@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckinControl));
             this.txtCheckname = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnCheckin = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btnCheckout = new System.Windows.Forms.Button();
             this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,18 +76,18 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Checkin/Checkout";
             // 
-            // btnSubmit
+            // btnCheckin
             // 
-            this.btnSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(52)))), ((int)(((byte)(252)))));
-            this.btnSubmit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(208, 134);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(133, 49);
-            this.btnSubmit.TabIndex = 2;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = false;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnCheckin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(52)))), ((int)(((byte)(252)))));
+            this.btnCheckin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckin.ForeColor = System.Drawing.Color.White;
+            this.btnCheckin.Location = new System.Drawing.Point(108, 137);
+            this.btnCheckin.Name = "btnCheckin";
+            this.btnCheckin.Size = new System.Drawing.Size(133, 49);
+            this.btnCheckin.TabIndex = 2;
+            this.btnCheckin.Text = "Checkin";
+            this.btnCheckin.UseVisualStyleBackColor = false;
+            this.btnCheckin.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnClose
             // 
@@ -104,8 +105,9 @@
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.btnCheckout);
             this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.bunifuGradientPanel1.Controls.Add(this.btnSubmit);
+            this.bunifuGradientPanel1.Controls.Add(this.btnCheckin);
             this.bunifuGradientPanel1.Controls.Add(this.btnClose);
             this.bunifuGradientPanel1.Controls.Add(this.txtCheckname);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.White;
@@ -117,6 +119,19 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(555, 195);
             this.bunifuGradientPanel1.TabIndex = 4;
+            // 
+            // btnCheckout
+            // 
+            this.btnCheckout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(52)))), ((int)(((byte)(252)))));
+            this.btnCheckout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckout.ForeColor = System.Drawing.Color.White;
+            this.btnCheckout.Location = new System.Drawing.Point(316, 137);
+            this.btnCheckout.Name = "btnCheckout";
+            this.btnCheckout.Size = new System.Drawing.Size(133, 49);
+            this.btnCheckout.TabIndex = 4;
+            this.btnCheckout.Text = "Checkout";
+            this.btnCheckout.UseVisualStyleBackColor = false;
+            this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
             // 
             // CheckinControl
             // 
@@ -138,8 +153,9 @@
 
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtCheckname;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnCheckin;
         private System.Windows.Forms.Button btnClose;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private System.Windows.Forms.Button btnCheckout;
     }
 }

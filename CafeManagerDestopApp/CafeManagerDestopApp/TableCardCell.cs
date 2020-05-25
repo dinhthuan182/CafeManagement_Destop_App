@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CafeManagerDestopApp.Entitys;
 
@@ -13,8 +7,9 @@ namespace CafeManagerDestopApp
 {
     public partial class TableCardCell : UserControl
     {
-        private Network.Network apiNetwork = new Network.Network();
+        private readonly Network.Network apiNetwork = new Network.Network();
         private TableItem table = new TableItem();
+
         public TableCardCell()
         {
             InitializeComponent();
@@ -49,7 +44,13 @@ namespace CafeManagerDestopApp
         {
             if (table.user_id == null)
             {
-                var detail = await apiNetwork.getTableDetail(this.table.id);
+                var detail = await apiNetwork.getTableDetail(table.id);
+                if (detail == null)
+                {
+                    MessageBox.Show("Not checkin yet, Please checkin.");
+                    return;
+                }
+
                 ((TableManager)this.Parent.Parent).ShowDetail(detail, this.table);
             } else
             {

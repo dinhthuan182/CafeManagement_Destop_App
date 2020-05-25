@@ -32,63 +32,66 @@ namespace CafeManagerDestopApp
             lblName.Text = "Table: " + table.name;
             lblTotal.Text = detail.current_total.ToString();
             lblDiscount.Text = (detail.current_total - detail.current_sale_total).ToString();
-            lblSubTotal.Text = detail.current_sale_total.ToString();
             lblFinalTotal.Text = detail.current_sale_total.ToString();
         }
 
-        public void Update(TableDetailItem newDetail, TableItem newTable)
+        public async void Update(TableDetailItem newDetail, TableItem newTable)
         {
             if (table.id != 0)
             {
-                var result = apiNetwork.UnstateAsync(table.id);
+                var result = await apiNetwork.UnstateAsync(table.id);
                 SetupData();
             }
 
             detail = newDetail;
             table = newTable;
 
-            for (int i = 0; i < newDetail.product_list.Count; i++)
+            if (newDetail.product_list != null)
             {
-                orderItem p = newDetail.product_list[i];
-                string[] row = new string[] {(i+1).ToString(), p.name, p.quantity.ToString(), p.price.ToString(), p.sale_price.ToString(), p.sale_price.HasValue ? (p.sale_price.Value * p.quantity).ToString():(p.price * p.quantity).ToString() };
-                productGrid.Rows.Add(row);
+                for (int i = 0; i < newDetail.product_list.Count; i++)
+                {
+                    orderItem p = newDetail.product_list[i];
+                    string[] row = new string[] { (i + 1).ToString(), p.name, p.quantity.ToString(), p.price.ToString(), p.sale_price == p.price ? "" : p.sale_price.ToString(), p.sale_price != p.price ? (p.sale_price.Value * p.quantity).ToString() : (p.price * p.quantity).ToString() };
+                    productGrid.Rows.Add(row);
 
-                productGrid.Rows[i].ReadOnly = true;
+                    productGrid.Rows[i].ReadOnly = true;
+                }
             }
-
 
             lblName.Text = "Table: " + newTable.name;
             lblTotal.Text = newDetail.current_total.ToString();
             lblDiscount.Text = (newDetail.current_total - newDetail.current_sale_total).ToString();
-            lblSubTotal.Text = newDetail.current_sale_total.ToString();
             lblFinalTotal.Text = newDetail.current_sale_total.ToString();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private async void btnExit_Click(object sender, EventArgs e)
         {
-            //CalApi unstate
-            var result = apiNetwork.UnstateAsync(table.id);
+            //Call Api unstate
+            var result = await apiNetwork.UnstateAsync(table.id);
                 // resetdata
                 SetupData();
         }
 
-        private void btnBill_Click(object sender, EventArgs e)
+        private async void btnBill_Click(object sender, EventArgs e)
         {
             if (detail.receipt_id.HasValue)
             {
-                var result = apiNetwork.GetBillAsync(detail.receipt_id.Value);
+                var result = await apiNetwork.GetBillAsync(detail.receipt_id.Value);
             }
         }
 
-        private void btnReceipt_Click(object sender, EventArgs e)
+        private async void btnReceipt_Click(object sender, EventArgs e)
         {
             if (detail.receipt_id.HasValue)
             {
-                var result = apiNetwork.GetReceiptAsync(detail.receipt_id.Value).Result;
+                var response = await apiNetwork.GetReceiptAsync(detail.receipt_id.Value);
 
-                if (result == true)
+                if (response.Item1 == true)
                 {
                     SetupData();
+                } else
+                {
+                    MessageBox.Show(response.Item2);
                 }
             }
         }
