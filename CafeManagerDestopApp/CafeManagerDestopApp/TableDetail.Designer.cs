@@ -38,6 +38,7 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblExportTime = new System.Windows.Forms.Label();
             this.btnReceipt = new System.Windows.Forms.Button();
             this.btnBill = new System.Windows.Forms.Button();
             this.lblFinalTotal = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.lblCreatedName = new System.Windows.Forms.Label();
+            this.lblCreatedDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -136,6 +139,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblCreatedDate);
+            this.panel1.Controls.Add(this.lblCreatedName);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.lblFinalTotal);
             this.panel1.Controls.Add(this.label8);
@@ -147,23 +152,33 @@
             this.panel1.Location = new System.Drawing.Point(12, 560);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(770, 190);
+            this.panel1.Size = new System.Drawing.Size(770, 274);
             this.panel1.TabIndex = 2;
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.lblExportTime);
             this.panel6.Controls.Add(this.btnReceipt);
             this.panel6.Controls.Add(this.btnBill);
-            this.panel6.Location = new System.Drawing.Point(508, 15);
+            this.panel6.Location = new System.Drawing.Point(508, 97);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(246, 175);
             this.panel6.TabIndex = 4;
             // 
+            // lblExportTime
+            // 
+            this.lblExportTime.AutoSize = true;
+            this.lblExportTime.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExportTime.Location = new System.Drawing.Point(3, 55);
+            this.lblExportTime.Name = "lblExportTime";
+            this.lblExportTime.Size = new System.Drawing.Size(0, 23);
+            this.lblExportTime.TabIndex = 10;
+            // 
             // btnReceipt
             // 
             this.btnReceipt.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReceipt.Location = new System.Drawing.Point(3, 106);
+            this.btnReceipt.Location = new System.Drawing.Point(3, 119);
             this.btnReceipt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReceipt.Name = "btnReceipt";
             this.btnReceipt.Size = new System.Drawing.Size(240, 50);
@@ -175,7 +190,7 @@
             // btnBill
             // 
             this.btnBill.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBill.Location = new System.Drawing.Point(3, 28);
+            this.btnBill.Location = new System.Drawing.Point(3, 2);
             this.btnBill.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBill.Name = "btnBill";
             this.btnBill.Size = new System.Drawing.Size(240, 50);
@@ -188,7 +203,7 @@
             // 
             this.lblFinalTotal.AutoSize = true;
             this.lblFinalTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFinalTotal.Location = new System.Drawing.Point(284, 146);
+            this.lblFinalTotal.Location = new System.Drawing.Point(284, 217);
             this.lblFinalTotal.Name = "lblFinalTotal";
             this.lblFinalTotal.Size = new System.Drawing.Size(60, 38);
             this.lblFinalTotal.TabIndex = 8;
@@ -198,7 +213,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 146);
+            this.label8.Location = new System.Drawing.Point(3, 217);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(184, 38);
             this.label8.TabIndex = 7;
@@ -207,7 +222,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Location = new System.Drawing.Point(0, 121);
+            this.panel2.Location = new System.Drawing.Point(10, 205);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(488, 10);
@@ -217,7 +232,7 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(285, 70);
+            this.lblDiscount.Location = new System.Drawing.Point(286, 158);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(28, 32);
             this.lblDiscount.TabIndex = 4;
@@ -227,7 +242,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(284, 15);
+            this.lblTotal.Location = new System.Drawing.Point(285, 103);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(60, 38);
             this.lblTotal.TabIndex = 3;
@@ -237,7 +252,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 70);
+            this.label3.Location = new System.Drawing.Point(4, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 32);
             this.label3.TabIndex = 1;
@@ -247,7 +262,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 15);
+            this.label2.Location = new System.Drawing.Point(4, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 38);
             this.label2.TabIndex = 0;
@@ -264,6 +279,24 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // lblCreatedName
+            // 
+            this.lblCreatedName.AutoSize = true;
+            this.lblCreatedName.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedName.Location = new System.Drawing.Point(6, 15);
+            this.lblCreatedName.Name = "lblCreatedName";
+            this.lblCreatedName.Size = new System.Drawing.Size(0, 25);
+            this.lblCreatedName.TabIndex = 9;
+            // 
+            // lblCreatedDate
+            // 
+            this.lblCreatedDate.AutoSize = true;
+            this.lblCreatedDate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatedDate.Location = new System.Drawing.Point(7, 57);
+            this.lblCreatedDate.Name = "lblCreatedDate";
+            this.lblCreatedDate.Size = new System.Drawing.Size(0, 23);
+            this.lblCreatedDate.TabIndex = 10;
+            // 
             // TableDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,11 +307,12 @@
             this.Controls.Add(this.lblName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TableDetail";
-            this.Size = new System.Drawing.Size(790, 763);
+            this.Size = new System.Drawing.Size(790, 892);
             ((System.ComponentModel.ISupportInitialize)(this.productGrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,5 +340,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn salePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.Label lblExportTime;
+        private System.Windows.Forms.Label lblCreatedDate;
+        private System.Windows.Forms.Label lblCreatedName;
     }
 }

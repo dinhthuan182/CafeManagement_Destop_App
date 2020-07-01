@@ -76,28 +76,17 @@ namespace CafeManagerDestopApp.Network
                 //get access token from response body
                 var responseJson = await responseMessage.Content.ReadAsStringAsync();
                 var jObject = JObject.Parse(responseJson);
+                var token = jObject.GetValue("access_token").ToString();
+                User user = jObject.GetValue("user").ToObject<User>();
+                var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
 
-                // Call Api checkin
-                //var checkin = CheckinAsync(username).Result;
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                //if (checkin.Item1 == true)
-                //{
-                    var token = jObject.GetValue("access_token").ToString();
-                    User user = jObject.GetValue("user").ToObject<User>();
-                    var expires = Convert.ToInt32(jObject.GetValue("expires_in"));
-
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                    // set token global
-                    AuthGlobals.access_token = token;
-                    AuthGlobals.user = user;
-                    AuthGlobals.expires_in = expires;
-
-                    return Tuple.Create(true, token);
-                //} else
-                //{
-               //    return checkin;
-               // }
+                // set token global
+                AuthGlobals.access_token = token;
+                AuthGlobals.user = user;
+                AuthGlobals.expires_in = expires;
+                return Tuple.Create(true, token);
 
             } catch
             {
@@ -317,20 +306,20 @@ namespace CafeManagerDestopApp.Network
         {
             using (WebClient webClient = new WebClient())
             {
-                DateTime localDate = DateTime.Now;
+                String time = DateTime.Now.ToString("yyyyMMdd_hhmmss");
                 String urlString = "http://" + host + fileName;
 
                 switch (fileType)
                 {
                     case PrintType.Bill:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + localDate.ToString("de-DE") + fileName);
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Bills\\" + time + "_" + fileName);
                         break;
                     case PrintType.Receipt:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + localDate.ToString("de-DE") + fileName);
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Receipts\\" + time + "_" + fileName);
 
                         break;
                     case PrintType.Order:
-                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\" + localDate.ToString("de-DE") + fileName);
+                        webClient.DownloadFile(urlString, @"C:\\Users\\PC\\Desktop\\TDTU_DA2\\DesktopApp\\Downloads\\Orders\\" + time + "_" + fileName);
 
                         break;
                 }
